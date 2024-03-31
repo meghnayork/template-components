@@ -1,0 +1,80 @@
+.template-header {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $dark;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+
+    &.gradient {
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 100%);
+    }
+
+    &.solid {
+        background: $dark;
+    }
+}
+
+.logo-wrapper {
+    max-width: 100px;
+    width: auto;
+    height: 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &.logo-circle {
+        width: 40px;
+        border-radius: 50%;
+    }
+
+    img {
+        height: 100%;
+    }
+}
+
+.brand-identity-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.small-title {
+    font-size: 10px;
+    margin-bottom: 5px;
+    color: $white;
+}
+
+.brand-title {
+    font-size: 12px;
+    line-height: 16px;
+    color: $white;
+}
+
+.cart {
+    &-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 2px;
+
+        p {
+            width: fit-content;
+            font-size: 15px;
+            line-height: 17px;
+            font-weight: 700;
+            color: $white;
+        }
+    }
+
+    &-icon {
+        width: 24px;
+        height: 24px;
+    }
+}

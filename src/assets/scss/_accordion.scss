@@ -1,0 +1,84 @@
+.accordion {
+    &-section {
+        padding: 20px 0 0;
+        border-bottom: 1px solid $dark;
+        transition: all .3s ease;
+
+        &:first-of-type {
+            border-top: 1px solid $dark;
+        }
+    }
+
+    &-title,
+    &-content {
+        font-size: 15px;
+        line-height: 20px;
+        color: $charcoal;
+        font-weight: 400;
+        transition: all .3s ease;
+    }
+
+    &-content {
+        padding-left: 55px;
+        margin-bottom: 20px;
+    }
+
+    &-header {
+        margin-bottom: 20px;
+        padding-left: 52px;
+        position: relative;
+
+        &::before {
+            content: '+';
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1px solid $charcoal;
+            color: $charcoal;
+            text-align: center;
+            font-size: 15px;
+            line-height: 17px;
+            transition: all .3s ease;
+            left: 0;
+            top: calc(50% - 11px);
+            position: absolute;
+        }
+
+        &.open {
+            &::before {
+                content: '-';
+            }
+        }
+
+        &.with-icon {
+            padding-left: 0;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+
+            &::before {
+                border: none;
+                font-size: 30px;
+                line-height: 36px;
+                color: $charcoal;
+                left: auto;
+                right: 0;
+                top: calc(50% - 20px);
+            }
+
+            .accordion {
+                &-icon {
+                    @include flex-centered;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 10px;
+                    background-color: $bg-semi-transparent;
+                }
+
+                &-title {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

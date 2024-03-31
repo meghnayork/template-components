@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    color: $white;
+}
+
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.body-content {
+    padding: 20px 10px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    margin-top: 10px;
+
+    &-dark {
+        padding: 13px 25px;
+        background-color: $dark;
+        border-radius: 10px;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+        color: $wheat;
+    }
+}
+
+.flex {
+    display: flex;
+
+    &-end {
+        justify-content: flex-end;
+    }
+
+    &-between {
+        justify-content: space-between;
+    }
+
+    &.align-center {
+        align-items: center;
+    }
+
+    &.gap-2 {
+        gap: 2px;
+    }
+}
+
+input {
+    border: 1px solid $mid-gray;
+    border-radius: 10px;
+    padding: 8px 20px;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 700;
+    color: $charcoal;
+}
+
+.label-text {
+    margin-bottom: 8px;
+    font-size: 12px;
+    line-height: 16px;
+    color: $charcoal;
+}
+
+select {
+    padding: 7px 9px;
+    margin-top: 8px;
+    background-color: transparent;
+    border: 1px solid $gray-light;
+    border-radius: 10px;
+    appearance: none;
+    background: url(https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/dropdown.svg) no-repeat right transparent;
+    background-position-x: 97%;
+    font-size: 15px;
+    line-height: 20px;
+    color: $charcoal;
+    width: 100%;
+}
+
+.slick-dots {
+    li {
+        margin: 0;
+
+        button:before {
+            content: '';
+            border-radius: 50%;
+            background-color: $mid-gray;
+            width: 10px;
+            height: 10px;
+        }
+
+        &.slick-active {
+            button:before {
+                background-color: $charcoal;
+            }
+        }
+    }
+}
+
+.position {
+    &-relative {
+        position: relative;
+    }
+
+    &-absolute {
+        position: absolute;
+    }
+}
+
+.heading {
+    font-size: 17px;
+    line-height: 19px;
+    font-weight: 700;
+    color: $charcoal;
+    margin-bottom: 16px;
+}

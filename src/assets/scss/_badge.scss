@@ -1,0 +1,19 @@
+.badge {
+    padding: 7px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 16px;
+    color: $wheat;
+
+    &.dark {
+        background-color: $dark-gray;
+    }
+
+    &.dark-blue {
+        background-color: $dark-blue;
+    }
+
+    &.mid-blue {
+        background-color: $mid-blue;
+    }
+}

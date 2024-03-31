@@ -1,0 +1,7 @@
+.product-listing {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 32px;
+    column-gap: 18px;
+    padding: 16px 20px;
+}

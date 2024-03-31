@@ -1,0 +1,35 @@
+.review {
+    &-card {
+        display: grid;
+        gap: 14px;
+    }
+
+    &-title {
+        font-size: 15px;
+        line-height: 17px;
+        font-weight: 700;
+        color: $charcoal;
+    }
+
+    &er-name {
+        font-size: 12px;
+        line-height: 14px;
+        color: $charcoal;
+    }
+}
+
+.feedback-text {
+    font-size: 12px;
+    line-height: 16px;
+    color: $charcoal;
+}
+
+.verified {
+    font-size: 12px;
+    line-height: 16px;
+    color: $light-gray;
+
+    span {
+        margin-left: 9px;
+    }
+}

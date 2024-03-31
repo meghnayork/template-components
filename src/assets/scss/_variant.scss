@@ -1,0 +1,29 @@
+.variant {
+    &-wrap {
+        padding: 8px 20px;
+    }
+
+    &-title {
+        font-size: 12px;
+        line-height: 16px;
+        color: $charcoal;
+        margin-bottom: 8px;
+    }
+
+    &-img {
+        width: 26px;
+        height: 26px;
+        background-color: $light-gray;
+        border-radius: 50%;
+        overflow: hidden;
+        @include flex-centered;
+
+        img {
+            max-height: 100%;
+        }
+
+        &-wrap {
+            gap: 11px;
+        }
+    }
+}

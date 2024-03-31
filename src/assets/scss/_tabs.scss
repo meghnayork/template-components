@@ -1,0 +1,45 @@
+.tabs {
+    padding: 32px 20px 25px;
+
+    li {
+        padding-left: 25px;
+        font-size: 15px;
+        line-height: 20px;
+        color: $charcoal;
+        position: relative;
+        list-style-type: none;
+        margin-bottom: 10px;
+
+        &::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            top: 7px;
+            left: 8px;
+            background-color: $dark;
+            position: absolute;
+        }
+    }
+}
+
+.tab {
+    padding-bottom: 8px;
+    font-size: 15px;
+    line-height: 20px;
+    color: $light-gray;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &.active {
+        color: $charcoal;
+        border-bottom: 3px solid $charcoal;
+    }
+
+    &-header {
+        margin-bottom: 26px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+}

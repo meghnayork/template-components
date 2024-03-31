@@ -1,0 +1,39 @@
+.cta {
+    &-wrap {
+        position: fixed;
+        width: 400px;
+        bottom: 0;
+        padding: 20px;
+        z-index: 99;
+
+        &.bg-full {
+            background-color: $bg-semi-transparent;
+        }
+    }
+
+    &-banner {
+        padding: 7px 30px 7px 15px;
+        border-radius: 10px;
+        background-color: $charcoal;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 42px;
+
+        &.mega-banner {
+            padding: 20px;
+            background-color: $dark;
+        }
+
+        &.text-center {
+            justify-content: center;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 17px;
+            font-weight: 700;
+            color: $wheat;
+        }
+    }
+}

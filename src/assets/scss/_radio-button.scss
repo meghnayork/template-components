@@ -1,0 +1,41 @@
+.radio {
+    display: none;
+
+    &-btn {
+        @include flex-centered;
+        flex-direction: column;
+        padding: 10px 7px;
+        border: 1px solid $mid-gray;
+        border-radius: 10px;
+        min-width: 166px;
+        font-size: 15px;
+        line-height: 17px;
+        font-weight: 700;
+        color: $mid-gray;
+        transition: all .3s ease;
+        text-align: center;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        span {
+            font-weight: 400;
+        }
+
+        &:has(.radio:checked) {
+            background-color: $dark;
+            border-color: $dark;
+            color: $wheat;
+        }
+
+        &-wrap {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+    }
+}

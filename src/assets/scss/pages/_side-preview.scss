@@ -1,0 +1,173 @@
+.full-page {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.preview {
+    &-wrap {
+        width: 100%;
+        overflow: auto;
+    }
+
+    &-pane {
+        flex-grow: 1;
+        background-color: $mid-gray;
+        display: flex;
+        justify-content: center;
+        padding-block: 100px;
+        overflow-y: auto;
+
+        @media (max-width: 992px) {
+            display: none;
+        }
+    }
+
+    &-heading {
+        font-size: 32px;
+        line-height: 36px;
+        font-weight: 700;
+        color: $dark;
+        text-align: center;
+    }
+}
+
+.side-img {
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 100px;
+    margin-bottom: 22px;
+    background-color: $light-gray;
+
+    img {
+        height: 100%;
+    }
+}
+
+.fix-width {
+    flex-shrink: 1;
+    position: relative;
+    overflow-y: auto;
+}
+
+.product {
+    &-bottom {
+        gap: 26px;
+        display: grid;
+        grid-template-columns: 35% calc(65% - 26px);
+    }
+
+    &-rating-wrap {
+        gap: 9px;
+
+        .review-count {
+            font-size: 12px;
+            line-height: 16px;
+            color: $blue;
+        }
+    }
+
+    &-tab {
+        max-width: 500px;
+    }
+}
+
+.video {
+    &-sidebar {
+        position: fixed;
+        top: 0;
+        z-index: 4;
+        width: 60%;
+        height: 100vh;
+        background-color: $mid-gray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-slider {
+        &-wrap {
+            .slick {
+                &-slide {
+                    position: relative;
+                    border-radius: 5px;
+                    overflow: hidden;
+                    max-height: 205px;
+                }
+
+                &-track {
+                    display: flex;
+                    gap: 9px;
+                }
+
+                &-dots {
+                    bottom: -40px;
+                    text-align: start;
+                    left: 9px;
+                }
+            }
+        }
+    }
+
+    &-wrapper {
+        width: 400px;
+
+        video {
+            width: 100%;
+        }
+    }
+
+    &-carousel {
+        padding-top: 26px;
+        padding-bottom: 50px;
+        margin-left: 20px;
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &-play-btn {
+        width: 47px;
+        height: 47px;
+        border-radius: 50%;
+        background-color: $dark;
+        @include flex-centered;
+        position: absolute;
+        z-index: 3;
+        top: calc(50% - 23.5px);
+        left: calc(50% - 23.5px);
+    }
+}
+
+.sidebar-close {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: $dark;
+    top: 14px;
+    right: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    color: $wheat;
+    @include flex-centered;
+    border: none;
+}
+
+.benefits-cards-wrap {
+    display: flex;
+    gap: 16px;
+    padding: 26px 20px;
+    flex-direction: column;
+}
+
+.faq-section {
+    padding: 26px 20px;
+}

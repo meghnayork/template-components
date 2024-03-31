@@ -1,0 +1,34 @@
+.qty {
+    &-selector-wrap {
+        padding: 8px 20px;
+    }
+
+    &-title {
+        font-size: 12px;
+        line-height: 16px;
+        color: $charcoal;
+        margin-bottom: 8px;
+    }
+
+    &-action-wrap {
+        @include flex-centered;
+        gap: 13px;
+        align-items: stretch;
+
+        input {
+            text-align: center;
+            width: 72%;
+        }
+    }
+
+    &-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        @include flex-centered;
+        color: $wheat;
+        font-size: 15px;
+        margin-top: 0;
+        background-color: $dark;
+    }
+}

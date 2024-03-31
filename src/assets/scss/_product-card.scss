@@ -1,0 +1,86 @@
+.product {
+    &-card-x {
+        padding: 10px;
+        background-color: $white;
+        gap: 10px;
+        display: flex;
+        align-items: stretch;
+        border-radius: 15px;
+        margin-bottom: 10px;
+    }
+
+    &-img-box {
+        width: 90px;
+        height: 90px;
+        overflow: hidden;
+        border-radius: 10px;
+        background-color: $gray-light;
+
+        img {
+            object-fit: cover;
+            width: 90px;
+            height: auto;
+        }
+    }
+
+    &-about {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        width: calc(100% - 100px);
+    }
+
+    &-sort-desc {
+        grid: 1 1;
+
+        .name {
+            font-size: 15px;
+            line-height: 17px;
+            font-weight: 700;
+            color: $charcoal;
+        }
+
+        .desc,
+        .price {
+            font-size: 12px;
+            line-height: 16px;
+            color: $gray-light;
+        }
+    }
+
+    &-actions {
+        grid: 1 1;
+        justify-self: end;
+        align-self: end;
+        display: flex;
+        align-items: center;
+
+        .qty {
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 700;
+            color: $charcoal;
+            margin-right: 7px;
+        }
+
+        .cart-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $dark;
+            margin-right: 4px;
+            border: none;
+            color: $white;
+            font-size: 15px;
+            line-height: 17px;
+            cursor: pointer;
+        }
+
+        .remove-product {
+            margin-left: 5px;
+        }
+    }
+}
