@@ -6,7 +6,7 @@ const Header = (props) => {
     variant = "gradient",
     logoCircle = false,
     enableCart = false,
-    productInCart = "",
+    productInCart = 0,
     subTitle = "",
     logoLink = "/",
     brandTitle = "",

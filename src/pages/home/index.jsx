@@ -13,6 +13,7 @@ const Home = () => {
         logoImg={"https://d1unenfz496pdf.cloudfront.net/Assets/logo-white.png"}
         brandTitle={"Brand Logo Title"}
         variant="solid"
+        enableCart={true}
       />
       {/* header :: end */}
 
