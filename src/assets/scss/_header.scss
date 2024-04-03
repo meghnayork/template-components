@@ -17,6 +17,10 @@
     &.solid {
         background: $dark;
     }
+
+    &.transparent {
+        background: transparent;
+    }
 }
 
 .logo-wrapper {
