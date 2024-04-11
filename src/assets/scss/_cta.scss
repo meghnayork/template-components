@@ -20,20 +20,30 @@
         justify-content: space-between;
         min-height: 42px;
 
-        &.mega-banner {
-            padding: 20px;
-            background-color: $dark;
-        }
-
-        &.text-center {
-            justify-content: center;
-        }
-
         p {
             font-size: 15px;
             line-height: 17px;
             font-weight: 700;
             color: $wheat;
+        }
+
+        &.disabled {
+            background-color: $gray-light;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        &.mega-banner {
+            padding: 20px;
+            background-color: $dark;
+
+            p {
+                line-height: 18px;
+            }
+        }
+
+        &.text-center {
+            justify-content: center;
         }
     }
 }

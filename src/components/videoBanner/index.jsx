@@ -7,6 +7,9 @@ const VideoBanner = (props) => {
     muteIcon = true,
     video,
     withProgress = false,
+    id,
+    loop = true,
+    className,
   } = props;
 
   const [mute, setMute] = useState(true);
@@ -24,8 +27,8 @@ const VideoBanner = (props) => {
   };
 
   const toggleMute = () => {
-    videoRef.current.muted = !videoRef.current.muted;
-    setMute(videoRef.current.muted);
+    setMute((prevMute) => !prevMute);
+    videoRef.current.muted = !mute;
   };
 
   useEffect(() => {
@@ -39,14 +42,19 @@ const VideoBanner = (props) => {
   }, [controlPlayer]);
 
   return (
-    <div className="video-banner-wrap">
-      <video ref={videoRef} muted loop={true} className="banner-video">
+    <div className={`video-banner-wrap`} id={id}>
+      <video
+        ref={videoRef}
+        loop={loop}
+        muted
+        className={`banner-video ${className}`}
+      >
         <source src={video} type="video/mp4" />
       </video>
       {/* mute icon start */}
       {muteIcon ? (
         <div className="mute-wrap" onClick={toggleMute}>
-          {!mute ? (
+          {mute ? (
             <svg
               width="32"
               height="31"
@@ -89,20 +97,19 @@ const VideoBanner = (props) => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M1.15838 10.9306C0.445373 9.74229 0.445373 8.25771 1.15838 7.06937C1.37596 6.70674 1.73641 6.45272 2.1511 6.36978L3.84413 6.03117C3.94499 6.011 4.03591 5.95691 4.10176 5.87788L6.17085 3.39498C7.3534 1.97592 7.94468 1.26638 8.47234 1.45742C9 1.64846 9 2.57207 9 4.41928L9 13.5807C9 15.4279 9 16.3515 8.47234 16.5426C7.94468 16.7336 7.3534 16.0241 6.17085 14.605L4.10176 12.1221C4.03591 12.0431 3.94499 11.989 3.84413 11.9688L2.1511 11.6302C1.73641 11.5473 1.37596 11.2933 1.15838 10.9306Z"
-                fill="#000000BF"
+                d="M5.14844 22.0933H1C0.447266 22.0933 0 21.6455 0 21.0933V10.0933C0 9.54077 0.447266 9.09326 1 9.09326H5.14844C5.2207 8.97681 5.31445 8.87475 5.43164 8.79492L16.4316 1.17944C17.0938 0.720458 18 1.19507 18 2.00171V29.1846C18 29.9912 17.0938 30.4661 16.4316 30.0068L5.43164 22.3914C5.31445 22.3115 5.2207 22.2095 5.14844 22.0933Z"
+                fill="black"
+                fillOpacity="0.75"
               />
               <path
-                d="M11.5355 5.46447C12.4684 6.39732 12.9948 7.66105 13 8.9803C13.0052 10.2996 12.4888 11.5674 11.5633 12.5076"
-                stroke="#000000BF"
-                strokeWidth="2"
-                strokeLinecap="round"
+                d="M21.2227 4.35474C21.2871 4.2915 21.3574 4.23633 21.4336 4.19018C21.7324 4.01001 22.1035 3.96558 22.4531 4.11621C24.4785 4.99048 26.2461 6.38916 27.5625 8.17749C29.1289 10.3025 29.9824 12.8687 30 15.5085C30.0176 18.1482 29.1992 20.7256 27.6621 22.8718C26.3691 24.678 24.623 26.1003 22.6074 27.002C21.9785 27.2842 21.2676 26.9238 21.0488 26.2688C20.832 25.6138 21.1914 24.9131 21.8145 24.6152C23.3301 23.8909 24.6445 22.7927 25.6309 21.416C26.8594 19.6992 27.5156 17.6372 27.5 15.5254C27.4863 13.4136 26.8027 11.3606 25.5508 9.66064C24.5469 8.29736 23.2168 7.21728 21.6914 6.51343C21.0645 6.22412 20.6953 5.52832 20.9043 4.87036C20.9688 4.66772 21.0801 4.49243 21.2227 4.35474Z"
+                fill="black"
+                fillOpacity="0.75"
               />
               <path
-                d="M15.6569 3.34314C17.1494 4.83572 17.9916 6.85769 17.9999 8.96848C18.0083 11.0793 17.182 13.1078 15.7012 14.6121"
-                stroke="#000000BF"
-                strokeWidth="2"
-                strokeLinecap="round"
+                d="M25 15.5933C25 18.2971 22.8496 20.6157 20.5 21.5952V9.59131C22.8496 10.5708 25 12.8894 25 15.5933Z"
+                fill="black"
+                fillOpacity="0.75"
               />
             </svg>
           )}
@@ -137,7 +144,6 @@ const VideoBanner = (props) => {
               </div>
             )}
           </div>
-          ß
         </>
       )}
       {/* play icon end */}

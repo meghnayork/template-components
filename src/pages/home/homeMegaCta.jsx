@@ -1,16 +1,14 @@
 import React from "react";
 import Header from "../../components/header";
-import ProductInfo from "../../components/productInfo";
 import VideoBanner from "../../components/videoBanner";
+import CTABanner from "../../components/ctaBanner";
 
-const Home = () => {
+const HomeMegaCta = () => {
   return (
     <div className="mobile-slide">
       {/* header :: start */}
       <Header
-        logoImg={
-          "https://d3g4zjp5cjxctn.cloudfront.net/BrandSettings/72812888367/Images/DD-Logo_1200x1200_1709835323111.png"
-        }
+        logoImg={"https://d1unenfz496pdf.cloudfront.net/Assets/logo-white.png"}
         brandTitle={"AM Routine with Oars + Alps"}
       />
       {/* header :: end */}
@@ -23,19 +21,19 @@ const Home = () => {
       />
       {/* video banner :: end */}
 
-      {/* product banner :: start */}
-      <ProductInfo
-        title="Wake Up Eye Stick"
-        price="$22"
-        originalPrice="$25"
-        discount="20%"
-        productImage={
-          "https://d1unenfz496pdf.cloudfront.net/Assets/product.jpeg"
+      {/* cta banner :: start */}
+      <CTABanner
+        ctaContent={
+          "If you buy the thing now <br/> you get the other special thing"
+        }
+        megaBanner={true}
+        link={
+          "https://d1ofuudqlu2e8.cloudfront.net/86c5d03e-3bad-4f94-b944-daa590fa0a48#"
         }
       />
-      {/* product banner :: end */}
+      {/* cta banner :: end */}
     </div>
   );
 };
 
-export default Home;
+export default HomeMegaCta;

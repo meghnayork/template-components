@@ -23,6 +23,20 @@ const OfferListing = () => {
           }
           offer={"Get 15% off"}
         />
+
+        <OfferCard
+          img={
+            "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png"
+          }
+          offer={"Get 15% off"}
+        />
+
+        <OfferCard
+          img={
+            "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png"
+          }
+          offer={"Get 15% off"}
+        />
       </div>
       {/* offer body :: end */}
     </div>

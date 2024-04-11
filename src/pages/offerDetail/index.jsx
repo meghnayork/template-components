@@ -17,11 +17,12 @@ const OfferDetail = () => {
       {/* header :: end */}
 
       {/* body :: start */}
-      <div className="offer-body">
+      <div className="offer-body detail-img">
         <div className="offer-img">
           <ImageOverlay
-            img="https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png"
-            text={"This is headline placeholder "}
+            img="https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/background-img.jpeg"
+            text={"Purifying Scalp Scrub"}
+            subText={"<span>$31.00</span> - $20.00"}
           />
         </div>
 
@@ -31,17 +32,74 @@ const OfferDetail = () => {
 
           <div className="offers">
             <ul>
-              <li>Value Props</li>
-              <li>Value Props</li>
-              <li>Value Props</li>
+              <li>
+                <div className="check">
+                  <svg
+                    width="9"
+                    height="8"
+                    viewBox="0 0 9 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.768066 4.24246L3.02887 6.36196L8.30407 0.709961"
+                      stroke="white"
+                      stroke-width="1.413"
+                    />
+                  </svg>
+                </div>
+                Value Props
+              </li>
+              <li>
+                <div className="check">
+                  <svg
+                    width="9"
+                    height="8"
+                    viewBox="0 0 9 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.768066 4.24246L3.02887 6.36196L8.30407 0.709961"
+                      stroke="white"
+                      stroke-width="1.413"
+                    />
+                  </svg>
+                </div>
+                Value Props
+              </li>
+              <li>
+                <div className="check">
+                  <svg
+                    width="9"
+                    height="8"
+                    viewBox="0 0 9 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M0.768066 4.24246L3.02887 6.36196L8.30407 0.709961"
+                      stroke="white"
+                      stroke-width="1.413"
+                    />
+                  </svg>
+                </div>
+                Value Props
+              </li>
             </ul>
           </div>
 
-          <p className="offer-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur et
-            a adipiscing elit, sed do eiusmod tempor incididunt
-          </p>
+          <div className="offer-content-wrap">
+            <p className="offer-content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt
+            </p>
+
+            <p className="offer-content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt
+            </p>
+          </div>
         </div>
         {/* offer details :: end */}
       </div>

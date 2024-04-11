@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../../components/header";
 import CTABanner from "../../components/ctaBanner";
 import PageBanner from "../../components/pageBanner";
@@ -11,10 +11,8 @@ import Tabs from "../../components/tabs";
 import Slider from "react-slick";
 import RatingStar from "../../components/ratingStar";
 import ReviewCard from "../../components/reviewCard";
-import RadioButton from "../../components/radioButton";
 
-const Shop = () => {
-  const [subscribe, setSubscribe] = useState("");
+const ShopCarousel = () => {
   // carousel settings start
   const setting = {
     dots: true,
@@ -181,28 +179,15 @@ const Shop = () => {
   ];
   // Rating end
 
-  // radio button values :: start
-  var radioVal = [
-    {
-      value: "one-time",
-      element: "<p>One Time Purchase</p>",
-      checked: true,
-    },
-    {
-      value: "subscribe",
-      element: "<p>Subscribe and Save</p> <span>Most Popular!</span>",
-    },
-  ];
-  // radio button values :: end
-
   return (
     <div className="mobile-slide">
       {/* header :: start */}
       <Header
         position={"relative"}
-        logoCircle={true}
-        logoImg={"https://d1unenfz496pdf.cloudfront.net/Assets/logo-white.png"}
-        brandTitle={"Brand Logo Title"}
+        logoImg={
+          "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/logo-white.svg"
+        }
+        brandTitle={"Shopping with Enso Rings"}
         variant="solid"
       />
       {/* header :: end */}
@@ -227,7 +212,9 @@ const Shop = () => {
       <ShopProductInfo
         heading={"Setup your Subscription!"}
         title={"Product Name"}
-        subTitle={"SubText"}
+        originalPrice={"$29.22"}
+        price={"$23.22"}
+        discount={"-20%"}
         rating={3}
         totalRating={6}
       />
@@ -236,6 +223,13 @@ const Shop = () => {
       {/* sort description :: start */}
       <SortDescPoints descList={descList} />
       {/* sort description :: end */}
+
+      {/* variant :: start */}
+      <Variant
+        variantImg={variantImg}
+        onSelect={(imageUrl) => console.log(imageUrl)}
+      />
+      {/* variant :: end */}
 
       {/* dropdown section :: start */}
       <div className="dropdown-section">
@@ -250,34 +244,17 @@ const Shop = () => {
       </div>
       {/* dropdown section :: end */}
 
-      {/* radio button :: start */}
-      <RadioButton options={radioVal} onChange={(data) => setSubscribe(data)} />
-      {/* radio button :: end */}
-
-      {/* price section :: start */}
-      <div className="flex price-area-wrap align-center">
-        <div className="product-price">
-          <span>$29.99</span> $12.22
-        </div>
-        <div className="discount">
-          <p>-20%</p>
-        </div>
-      </div>
-      {/* price section :: end */}
-
       {/* dropdown section :: start */}
-      {subscribe === "subscribe" && (
-        <div className="dropdown-section">
-          <label htmlFor="dropdown" className="label-text">
-            Dropdown Title
-          </label>
-          <select id="dropdown" className="dropdown">
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </select>
-        </div>
-      )}
+      <div className="dropdown-section">
+        <label htmlFor="dropdown" className="label-text">
+          Dropdown Title
+        </label>
+        <select id="dropdown" className="dropdown">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <option value="3">Option 3</option>
+        </select>
+      </div>
       {/* dropdown section :: end */}
 
       {/* quantity section :: start */}
@@ -311,7 +288,7 @@ const Shop = () => {
       {/* carousel :: end */}
 
       {/* review section :: start */}
-      <div className="review-section">
+      <div className="review-section pb-extra-100">
         <h4 className="review-heading">Reviews Headline</h4>
         <div className="overall-rating">
           <RatingStar rating={4} />
@@ -341,4 +318,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default ShopCarousel;

@@ -1,12 +1,13 @@
 import React from "react";
 import RatingStar from "../ratingStar";
 import Badge from "../badge";
+import { Link } from "react-router-dom";
 
 const ProductCard = (props) => {
-  const { productImg, name, rating, price, offer, category } = props;
+  const { productImg, name, rating, price, offer, category, link } = props;
 
   return (
-    <div className="product-card">
+    <Link to={link} className="product-card">
       <div className="product-grid-img-wrap">
         <img src={productImg} alt="" />
       </div>
@@ -23,7 +24,7 @@ const ProductCard = (props) => {
           {category && <Badge variant={"mid-blue"} text={category} />}
         </div>
       )}
-    </div>
+    </Link>
   );
 };
 

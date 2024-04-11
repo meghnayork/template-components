@@ -8,12 +8,77 @@ import ProductInfo from "../../components/productInfo";
 import Slider from "react-slick";
 import BenefitsCard from "../../components/benefitsCard";
 import Accordion from "../../components/accordion";
+import ReviewCard from "../../components/reviewCard";
+import Tabs from "../../components/tabs";
+import ImageOverlay from "../../components/imageOverlay";
 
 const SidePreview = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentVideoUrl, setCurrentVideoUrl] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const [productId, setProductId] = useState([]);
+  const [domain, setdomain] = useState("");
+  const [checkout, setCheckout] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
+  // domain and product id from url :: start
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const productParam = url.searchParams.get("product");
+    const domainParam = url.searchParams.get("domain");
+
+    if (productParam) {
+      const productIdsArray = productParam
+        .split(",")
+        .filter((item) => item.trim() !== "") // Filter out empty values
+        .map((item) => {
+          const [id, quantity] = item.trim().split("@");
+          return { id, quantity };
+        });
+      setProductId(productIdsArray);
+
+      const fullLink = url.href;
+      const productLink = `/cart?${fullLink.split("?")[1]}`;
+      setCheckout(productLink);
+    }
+
+    if (domainParam) {
+      setdomain(`https://${domainParam.split("/")[2]}`);
+    }
+  }, []);
+
+  // domain and product id from url :: end
+
+  // product data fetch :: start
+  useEffect(() => {
+    if (domain) {
+      fetch(`${domain}/products.json`)
+        .then((response) => response.json())
+        .then((data) => {
+          const filteredProducts = data.products.filter((product) =>
+            productId.some(({ id }) =>
+              product.variants.some((variant) => variant.id == id)
+            )
+          );
+
+          const productWithHighestPrice = filteredProducts.reduce(
+            (prevProduct, currentProduct) => {
+              return parseFloat(currentProduct.variants[0].price) >
+                parseFloat(prevProduct.variants[0].price)
+                ? currentProduct
+                : prevProduct;
+            },
+            filteredProducts[0]
+          );
+
+          setFilteredProducts(productWithHighestPrice);
+        })
+        .catch((error) => console.error("Error fetching products:", error));
+    }
+  }, [domain, productId]);
+  // product data fetch :: end
 
   useEffect(() => {
     setIsSmallScreen(window.innerWidth <= 992);
@@ -100,6 +165,150 @@ const SidePreview = () => {
   ];
   // faq content :: end
 
+  // carousel settings start
+  const imgCarouselSetting = {
+    dots: true,
+    arrows: false,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    swipeToSlide: true,
+    cssEase: "linear",
+  };
+  // carousel settings end
+
+  // carousel slides start
+  const slides = [
+    {
+      id: 1,
+      imageUrl:
+        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png",
+      alt: "Slide 1",
+    },
+    {
+      id: 2,
+      imageUrl:
+        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png",
+      alt: "Slide 2",
+    },
+    {
+      id: 3,
+      imageUrl:
+        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png",
+      alt: "Slide 3",
+    },
+    {
+      id: 4,
+      imageUrl:
+        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png",
+      alt: "Slide 4",
+    },
+  ];
+  // carousel slides end
+
+  // tabs start
+  const tabs = [
+    {
+      title: "Product Details",
+      content: (
+        <ul>
+          <li>
+            <b>What it does: </b> This eye serum spreads easily with a cooling
+            metal rollerball to help provide an immediate soothing feeling to
+            your under-eye area. The serum also contains ingredients that help
+            cool and de-puff. Caffeine helps increase microcirculation to
+            minimize puffiness and inflammation, while Aloe Vera soothes the
+            skin, Alpine Caribou Moss™ helps promote skin elasticity and Persian
+            Silk Tree Extract helps repair tired-looking skin.
+          </li>
+          <li>
+            <b>Size : 0.5 fl oz. / 15 ml.</b>
+          </li>
+        </ul>
+      ),
+    },
+    {
+      title: "FAQ & Features",
+      content: (
+        <ul>
+          <li>
+            <b>What it does: </b> This eye serum spreads easily with a cooling
+            metal rollerball to help provide an immediate soothing feeling to
+            your under-eye area. The serum also contains ingredients that help
+            cool and de-puff. Caffeine helps increase microcirculation to
+            minimize puffiness and inflammation, while Aloe Vera soothes the
+            skin, Alpine Caribou Moss™ helps promote skin elasticity and Persian
+            Silk Tree Extract helps repair tired-looking skin.
+          </li>
+          <li>
+            <b>Size : 0.5 fl oz. / 15 ml.</b>
+          </li>
+          <li>
+            <b>Color description:</b> Gold
+          </li>
+        </ul>
+      ),
+    },
+    {
+      title: "Ingredients",
+      content: (
+        <ul>
+          <li>
+            <b>What it does: </b> This eye serum spreads easily with a cooling
+            metal rollerball to help provide an immediate soothing feeling to
+            your under-eye area. The serum also contains ingredients that help
+            cool and de-puff. Caffeine helps increase microcirculation to
+            minimize puffiness and inflammation, while Aloe Vera soothes the
+            skin, Alpine Caribou Moss™ helps promote skin elasticity and Persian
+            Silk Tree Extract helps repair tired-looking skin.
+          </li>
+          <li>
+            <b>Size : 0.5 fl oz. / 15 ml.</b>
+          </li>
+          <li>
+            <b>Color description:</b> Gold
+          </li>
+          <li>
+            <b>Finish:</b> Metallic
+          </li>
+        </ul>
+      ),
+    },
+  ];
+  // tabs end
+
+  // Rating start
+  const rating = [
+    {
+      title: "Good",
+      rating: 4,
+      feedback:
+        "I like the bit of cold the metal applicator provides as an extra little wake up. I noticed fairly quick resume when using this eye stick in terms of tighter skin, less puff, and no black circles. The product absorbs well and doesn’t feel sticky.",
+      name: "Name L.",
+      verified: true,
+    },
+    {
+      title: "Good",
+      rating: 4,
+      feedback:
+        "I like the bit of cold the metal applicator provides as an extra little wake up. I noticed fairly quick resume when using this eye stick in terms of tighter skin, less puff, and no black circles. The product absorbs well and doesn’t feel sticky.",
+      name: "Name L.",
+      verified: true,
+    },
+    {
+      title: "Good",
+      rating: 4,
+      feedback:
+        "I like the bit of cold the metal applicator provides as an extra little wake up. I noticed fairly quick resume when using this eye stick in terms of tighter skin, less puff, and no black circles. The product absorbs well and doesn’t feel sticky.",
+      name: "Name L.",
+      verified: true,
+    },
+  ];
+  // Rating end
+
   return (
     <div className="full-page">
       {/* side preview :: start */}
@@ -113,7 +322,11 @@ const SidePreview = () => {
 
             <div className="side-img">
               <img
-                src="https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/oars-face-wash-product.jpg"
+                src={
+                  filteredProducts.length === 0
+                    ? "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/oars-face-wash-product.jpg"
+                    : filteredProducts.variants[0].featured_image.src
+                }
                 alt=""
               />
             </div>
@@ -124,7 +337,11 @@ const SidePreview = () => {
                 <Link className="review-count">2 Reviews</Link>
               </div>
 
-              <CTABanner ctaContent={"Get 15% Off"} className="offer-cta" />
+              <CTABanner
+                ctaContent={"Get 15% Off"}
+                className="offer-cta"
+                link={checkout}
+              />
             </div>
           </div>
           {/* product preview :: end */}
@@ -216,6 +433,8 @@ const SidePreview = () => {
         <div className="position-relative">
           {/* header :: start */}
           <Header
+            enableCart={true}
+            productInCart={productId ? productId.length : 0}
             logoImg={
               "https://d1unenfz496pdf.cloudfront.net/Assets/logo-white.png"
             }
@@ -225,6 +444,7 @@ const SidePreview = () => {
 
           {/* video banner :: start */}
           <VideoBanner
+            className="h-88vh"
             video={
               "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/shopifyAd.mp4"
             }
@@ -233,13 +453,27 @@ const SidePreview = () => {
 
           {/* product banner :: start */}
           <ProductInfo
+            ctaLink={checkout}
             position="absolute"
-            title="Product Name"
-            price="$22"
-            originalPrice="$25"
+            title={
+              filteredProducts.length === 0
+                ? "Product Name"
+                : filteredProducts.title
+            }
+            desc={
+              filteredProducts.length > 0 && filteredProducts.variants[0].title
+            }
+            price={
+              filteredProducts.length > 0
+                ? `$${filteredProducts.variants[0].price}`
+                : "$22"
+            }
+            // originalPrice="$25"
             discount="20%"
             productImage={
-              "https://d1unenfz496pdf.cloudfront.net/Assets/product.jpeg"
+              filteredProducts === null || filteredProducts.length === 0
+                ? "https://d1unenfz496pdf.cloudfront.net/Assets/product.jpeg"
+                : filteredProducts.variants[0].featured_image.src
             }
           />
           {/* product banner :: end */}
@@ -290,9 +524,24 @@ const SidePreview = () => {
         <div className="benefits-cards-wrap">
           <h3 className="heading">Value Prop + Image Stack</h3>
 
-          <BenefitsCard title="Key Benefit 1" />
-          <BenefitsCard title="Key Benefit 2" />
-          <BenefitsCard title="Key Benefit 3" />
+          <BenefitsCard
+            title="Key Benefit 1"
+            img={
+              "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/offer1.png"
+            }
+          />
+          <BenefitsCard
+            title="Key Benefit 2"
+            img={
+              "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/offer1.png"
+            }
+          />
+          <BenefitsCard
+            title="Key Benefit 3"
+            img={
+              "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/offer1.png"
+            }
+          />
         </div>
         {/* benefits cards :: end */}
 
@@ -303,6 +552,155 @@ const SidePreview = () => {
           <Accordion content={faqContent} />
         </div>
         {/* faq section :: end */}
+
+        {/* review section :: start */}
+        <div className="review-section">
+          <h4 className="review-heading">Reviews Headline</h4>
+          <div className="overall-rating">
+            <RatingStar rating={4} />
+            <p className="average-rating">5.0</p>
+            <p className="total-rating-count">384738 Reviews</p>
+          </div>
+
+          <div className="all-ratings">
+            {rating.map((rating, index) => (
+              <ReviewCard
+                key={index}
+                title={rating.title}
+                feedback={rating.feedback}
+                rating={rating.rating}
+                name={rating.name}
+                verified={rating.verified}
+              />
+            ))}
+          </div>
+        </div>
+        {/* review section :: end */}
+
+        {/* tabs :: start */}
+        <h3 className="section-title p-20">Product Info Headline</h3>
+        <Tabs tabs={tabs} />
+        {/* tabs :: end */}
+
+        {/* carousel :: start */}
+        <div className="carousel-wrap">
+          <Slider {...imgCarouselSetting}>
+            {slides.map((slide, index) => (
+              <div key={index}>
+                <div key={slide.id} className="carousel-item">
+                  <img src={slide.imageUrl} alt={slide.alt} />
+                </div>
+              </div>
+            ))}
+          </Slider>
+        </div>
+        {/* carousel :: end */}
+
+        {/* text section :: start */}
+        <div className="text-section-wrap">
+          <h3 className="section-title">Headline</h3>
+
+          <div className="content-wrap">
+            <p className="content">
+              Just a little bit of body copy here. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit.
+            </p>
+
+            <ul className="list-content">
+              <li>
+                <p>
+                  <span>Bullet Point</span> <br />
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                  at nunc libero. Pellentesque nunc nisl, iaculis ut tortor vel,
+                  lobortis accumsan nunc.{" "}
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <span>Bullet Point</span> <br />
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                  at nunc libero. Pellentesque nunc nisl, iaculis ut tortor vel,
+                  lobortis accumsan nunc.{" "}
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <span>Bullet Point</span> <br />
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                  at nunc libero. Pellentesque nunc nisl, iaculis ut tortor vel,
+                  lobortis accumsan nunc.{" "}
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  <span>Bullet Point</span> <br />
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+                  at nunc libero. Pellentesque nunc nisl, iaculis ut tortor vel,
+                  lobortis accumsan nunc.{" "}
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+        {/* text section :: end */}
+
+        {/* image section :: start */}
+        <div className="text-section-wrap">
+          <h3 className="section-title">Image Module Headline</h3>
+
+          <div className="detail-img">
+            <div className="offer-img">
+              <ImageOverlay img="https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png" />
+            </div>
+          </div>
+        </div>
+        {/* image section :: end */}
+
+        {/* product grid :: start */}
+        <div className="text-section-wrap">
+          <h3 className="section-title">Value Prop + Image Stack v2</h3>
+
+          <div className="content-wrap">
+            <p className="content">
+              Just a little bit of body copy here. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit.
+            </p>
+          </div>
+
+          <div className="product-grid-wrap">
+            <div className="product-grid-item">
+              <ImageOverlay
+                img="https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png"
+                text={"Key Benefit"}
+              />
+            </div>
+
+            <div className="product-grid-item">
+              <ImageOverlay
+                img="https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png"
+                text={"Key Benefit"}
+              />
+            </div>
+
+            <div className="product-grid-item">
+              <ImageOverlay
+                img="https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png"
+                text={"Key Benefit"}
+              />
+            </div>
+
+            <div className="product-grid-item">
+              <ImageOverlay
+                img="https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png"
+                text={"Key Benefit"}
+              />
+            </div>
+          </div>
+        </div>
+        {/* product grid :: end */}
       </div>
       {/* mobile slide :: end */}
     </div>

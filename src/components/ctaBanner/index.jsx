@@ -10,17 +10,22 @@ const CTABanner = (props) => {
     megaBanner,
     link = "/",
     className = "",
+    disabled = false,
   } = props;
 
   return (
     <div className={`cta-wrap ${withFullBg ? "bg-full" : ""} ${className}`}>
       <Link
-        to={link}
+        to={!disabled && link}
         className={`cta-banner ${megaBanner && "mega-banner"} ${
           !isIcon && isTextCenter ? "text-center" : ""
-        }`}
+        } ${disabled && "disabled"}`}
       >
-        <p>{ctaContent}</p>
+        {!megaBanner ? (
+          <p>{ctaContent}</p>
+        ) : (
+          <p dangerouslySetInnerHTML={{ __html: ctaContent }} />
+        )}
         {isIcon && (
           <svg
             width="28"

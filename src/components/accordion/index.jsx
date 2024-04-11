@@ -27,7 +27,15 @@ const Accordion = (props) => {
             <h6 className="accordion-title">{section.title}</h6>
           </div>
           {index === openIndex && (
-            <div className="accordion-content">{section.content}</div>
+            <div className="accordion-content">
+              {section.content}
+
+              {section.img && (
+                <div className="accordion-img">
+                  <img src={section.img} />
+                </div>
+              )}
+            </div>
           )}
         </div>
       ))}

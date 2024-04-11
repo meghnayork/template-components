@@ -81,4 +81,18 @@
             }
         }
     }
+
+    &-img {
+        width: 236px;
+        height: 136px;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-top: 25px;
+
+        img {
+            object-fit: cover;
+            min-width: 100%;
+            height: 100%;
+        }
+    }
 }

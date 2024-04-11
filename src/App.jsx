@@ -8,6 +8,18 @@ import {
   OfferListing,
   SidePreview,
   VideoSlider,
+  Home2,
+  Home3,
+  HomeCta,
+  HomeMegaCta,
+  ShopStandard,
+  ShopStandardImg,
+  ShopCarousel,
+  ProductGrid,
+  GatedOffer,
+  MiniPdp,
+  SingleVideo,
+  ProgramSignup,
 } from "./pages";
 
 function App() {
@@ -15,6 +27,22 @@ function App() {
     {
       path: "/",
       element: <Home />,
+    },
+    {
+      path: "/home2",
+      element: <Home2 />,
+    },
+    {
+      path: "/home3",
+      element: <Home3 />,
+    },
+    {
+      path: "/home-cta",
+      element: <HomeCta />,
+    },
+    {
+      path: "/home-mega-cta",
+      element: <HomeMegaCta />,
     },
     {
       path: "/cart",
@@ -25,8 +53,24 @@ function App() {
       element: <Shop />,
     },
     {
+      path: "/shop-standard",
+      element: <ShopStandard />,
+    },
+    {
+      path: "/shop-standard-img",
+      element: <ShopStandardImg />,
+    },
+    {
+      path: "/shop-carousel",
+      element: <ShopCarousel />,
+    },
+    {
       path: "/products",
       element: <Products />,
+    },
+    {
+      path: "/product-grid",
+      element: <ProductGrid />,
     },
     {
       path: "/offer-detail",
@@ -43,6 +87,22 @@ function App() {
     {
       path: "/video-slider",
       element: <VideoSlider />,
+    },
+    {
+      path: "/gated-offer",
+      element: <GatedOffer />,
+    },
+    {
+      path: "/mini-pdp",
+      element: <MiniPdp />,
+    },
+    {
+      path: "/single-video",
+      element: <SingleVideo />,
+    },
+    {
+      path: "/program-signup",
+      element: <ProgramSignup />,
     },
   ]);
   return (

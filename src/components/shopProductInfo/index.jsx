@@ -30,9 +30,11 @@ const ShopProductInfo = (props) => {
 
       <div className={`flex ${subTitle ? "flex-between" : "flex-end"}`}>
         {subTitle && <p className="sub-title">{subTitle}</p>}
-        <div className="discount">
-          <p>{discount}</p>
-        </div>
+        {discount && (
+          <div className="discount">
+            <p>{discount}</p>
+          </div>
+        )}
       </div>
 
       {rating && (

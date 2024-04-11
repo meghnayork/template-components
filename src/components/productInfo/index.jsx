@@ -35,7 +35,9 @@ const ProductInfo = (props) => {
           )}
           <div className="price-wrap">
             <p className="price">{price}</p>
-            <p className="original-price"> {originalPrice} </p>
+            {originalPrice && (
+              <p className="original-price"> ({originalPrice}) </p>
+            )}
             <p className="discount-badge"> {discount} </p>
           </div>
           <Link

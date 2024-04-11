@@ -2,6 +2,8 @@
     height: 100%;
     max-width: 100%;
     background-color: $dark-gray;
+    width: 0;
+    transition: all .3s ease;
 
     &-wrap {
         padding: 8px 20px;

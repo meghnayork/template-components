@@ -87,6 +87,7 @@ input {
     line-height: 20px;
     font-weight: 700;
     color: $charcoal;
+    background-color: $wheat;
 }
 
 .label-text {
@@ -99,11 +100,10 @@ input {
 select {
     padding: 7px 9px;
     margin-top: 8px;
-    background-color: transparent;
     border: 1px solid $gray-light;
     border-radius: 10px;
     appearance: none;
-    background: url(https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/dropdown.svg) no-repeat right transparent;
+    background: url(https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/dropdown.svg) no-repeat right $wheat;
     background-position-x: 97%;
     font-size: 15px;
     line-height: 20px;
@@ -131,20 +131,17 @@ select {
     }
 }
 
-.position {
-    &-relative {
-        position: relative;
-    }
-
-    &-absolute {
-        position: absolute;
-    }
-}
-
 .heading {
     font-size: 17px;
     line-height: 19px;
     font-weight: 700;
     color: $charcoal;
     margin-bottom: 16px;
+}
+
+.section-title {
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: $charcoal;
+    font-weight: 700;
 }

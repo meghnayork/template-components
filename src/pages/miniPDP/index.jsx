@@ -4,7 +4,6 @@ import CTABanner from "../../components/ctaBanner";
 import PageBanner from "../../components/pageBanner";
 import ShopProductInfo from "../../components/shopProductInfo";
 import SortDescPoints from "../../components/sortDescPoints";
-import Variant from "../../components/variant";
 import QtySelector from "../../components/qtySelector";
 import Badge from "../../components/badge";
 import Tabs from "../../components/tabs";
@@ -13,7 +12,7 @@ import RatingStar from "../../components/ratingStar";
 import ReviewCard from "../../components/reviewCard";
 import RadioButton from "../../components/radioButton";
 
-const Shop = () => {
+const MiniPdp = () => {
   const [subscribe, setSubscribe] = useState("");
   // carousel settings start
   const setting = {
@@ -62,16 +61,6 @@ const Shop = () => {
   // description list items start
   const descList = ["Value Prop", "Value Prop", "Value Prop"];
   // description list items end
-
-  // variant images start
-  const variantImg = [
-    "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/ring-product4.svg",
-    "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/ring-product3.svg",
-    "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/ring-product2.svg",
-    "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/ring-product1.svg",
-    "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png",
-  ];
-  // variant images end
 
   // benefits start
   const benefits = [
@@ -209,18 +198,11 @@ const Shop = () => {
 
       {/* page banner :: start */}
       <PageBanner
-        imageBanner={false}
-        carouselBanner={true}
-        carouselSettings={setting}
-      >
-        {slides.map((slide, index) => (
-          <div key={index}>
-            <div key={slide.id} className="banner-carousel-item">
-              <img src={slide.imageUrl} alt={slide.alt} />
-            </div>
-          </div>
-        ))}
-      </PageBanner>
+        imageBanner={true}
+        image={
+          "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png"
+        }
+      />
       {/* page banner :: end */}
 
       {/* shop product info :: start */}
@@ -341,4 +323,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default MiniPdp;

@@ -3,14 +3,12 @@ import Header from "../../components/header";
 import ProductInfo from "../../components/productInfo";
 import VideoBanner from "../../components/videoBanner";
 
-const Home = () => {
+const Home3 = () => {
   return (
     <div className="mobile-slide">
       {/* header :: start */}
       <Header
-        logoImg={
-          "https://d3g4zjp5cjxctn.cloudfront.net/BrandSettings/72812888367/Images/DD-Logo_1200x1200_1709835323111.png"
-        }
+        logoImg={"https://d1unenfz496pdf.cloudfront.net/Assets/logo-white.png"}
         brandTitle={"AM Routine with Oars + Alps"}
       />
       {/* header :: end */}
@@ -20,6 +18,7 @@ const Home = () => {
         video={
           "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/shopifyAd.mp4"
         }
+        // withProgress={true}
       />
       {/* video banner :: end */}
 
@@ -29,6 +28,8 @@ const Home = () => {
         price="$22"
         originalPrice="$25"
         discount="20%"
+        desc="Product Callouts"
+        rating={3}
         productImage={
           "https://d1unenfz496pdf.cloudfront.net/Assets/product.jpeg"
         }
@@ -38,4 +39,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Home3;

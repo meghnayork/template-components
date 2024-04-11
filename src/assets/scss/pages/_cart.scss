@@ -1,0 +1,18 @@
+.cart-item-wrap {
+    display: grid;
+    row-gap: 10px;
+    margin-bottom: 20px;
+}
+
+.relevant-product-wrap {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar for Chrome, Safari, and Opera */
+    }
+}

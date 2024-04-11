@@ -1,0 +1,95 @@
+.relevant {
+    &-product {
+        &-card {
+            &-wrap {
+                width: 295px;
+                border-radius: 15px;
+                overflow: hidden;
+                background-color: $white;
+                padding: 8px 10px;
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                flex: 0 0 auto;
+            }
+        }
+
+        &-img-wrap {
+            width: 80px;
+            height: 84px;
+            overflow: hidden;
+            border-radius: 10px;
+            background-color: $light-white;
+            @include flex-centered;
+
+            img {
+                width: 100%;
+                max-height: 100%;
+            }
+        }
+
+        &-info-wrap {
+            width: calc(100% - 90px);
+        }
+    }
+
+    &-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 10px;
+        font-weight: 700;
+        color: $charcoal;
+    }
+
+    &-rating-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-block: 6px;
+    }
+
+    &-review-count {
+        font-size: 10px;
+        color: $blue;
+        text-decoration: dashed;
+    }
+
+    &-original-amount {
+        font-size: 10px;
+        font-weight: 700;
+        color: $gray-light;
+        margin-right: 6px;
+    }
+
+    &-final-amount {
+        font-size: 10px;
+        font-weight: 700;
+        color: $charcoal;
+    }
+
+    &-pricing-info {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.discount-amount-badge {
+    padding: 0 7px;
+    font-size: 10px;
+    font-weight: 700;
+    color: $charcoal;
+    margin-left: 6px;
+    border-radius: 4px;
+    background-color: $wheat;
+}
+
+.btn-cart-dark {
+    margin-top: 6px;
+    width: 100%;
+    background-color: $dark;
+    padding: 6px 10px;
+    text-align: center;
+    color: $wheat;
+    border-radius: 10px;
+}
