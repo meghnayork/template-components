@@ -6,6 +6,10 @@
         padding: 20px;
         z-index: 99;
 
+        @media (max-width: 400px) {
+            width: 100%;
+        }
+
         &.bg-full {
             background-color: $bg-semi-transparent;
         }
