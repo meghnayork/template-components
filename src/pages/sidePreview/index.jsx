@@ -317,7 +317,7 @@ const SidePreview = () => {
           {/* product preview :: start */}
           <div className="product-tab">
             <h4 className="preview-heading">
-              Still thinking about our Product Name?
+              Still thinking about our Product?
             </h4>
 
             <div className="side-img">
