@@ -48,6 +48,7 @@ const VideoBanner = (props) => {
         ref={videoRef}
         loop={loop}
         muted
+        autoPlay
         className={`banner-video ${className}`}
       >
         <source src={video} type="video/mp4" />
