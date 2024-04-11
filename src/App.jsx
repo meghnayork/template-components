@@ -21,6 +21,7 @@ import {
   SingleVideo,
   ProgramSignup,
 } from "./pages";
+import ErrorPage from "./pages/404";
 
 function App() {
   const router = createBrowserRouter([
@@ -103,6 +104,10 @@ function App() {
     {
       path: "/program-signup",
       element: <ProgramSignup />,
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
     },
   ]);
   return (
