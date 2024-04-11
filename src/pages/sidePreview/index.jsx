@@ -453,6 +453,7 @@ const SidePreview = () => {
 
           {/* product banner :: start */}
           <ProductInfo
+            ctaText={"Checkout now"}
             ctaLink={checkout}
             position="absolute"
             title={

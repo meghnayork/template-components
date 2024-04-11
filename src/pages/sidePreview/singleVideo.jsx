@@ -134,6 +134,7 @@ const SingleVideo = () => {
 
           {/* product banner :: start */}
           <ProductInfo
+            ctaText={"Checkout now"}
             ctaLink={checkout}
             position="absolute"
             title={
