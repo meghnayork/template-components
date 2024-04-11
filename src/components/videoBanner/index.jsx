@@ -43,12 +43,7 @@ const VideoBanner = (props) => {
 
   return (
     <div className={`video-banner-wrap`} id={id}>
-      <video
-        ref={videoRef}
-        loop={loop}
-        muted
-        className={`banner-video ${className}`}
-      >
+      <video ref={videoRef} loop={loop} className={`banner-video ${className}`}>
         <source src={video} type="video/mp4" />
       </video>
       {/* mute icon start */}
