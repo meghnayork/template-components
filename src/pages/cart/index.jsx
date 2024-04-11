@@ -243,7 +243,9 @@ const Cart = () => {
       </div>
 
       {/* cta banner :: start */}
-      <CTABanner ctaContent={"Checkout Now"} link={checkout} />
+      {domain && productId && (
+        <CTABanner ctaContent={"Checkout Now"} link={checkout} />
+      )}
       {/* cta banner :: end */}
     </div>
   );
