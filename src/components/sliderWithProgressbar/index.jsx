@@ -20,7 +20,7 @@ const SliderWithProgressBar = (props) => {
     if (functionExecuted) {
       increaseProgress(duration);
     }
-  }, [functionExecuted, duration]);
+  }, [functionExecuted, duration, currentIndex]);
 
   const increaseProgress = (duration) => {
     let currentValue = 0;
