@@ -17,7 +17,9 @@ export const extractDataFromUrl = (url) => {
       });
 
     const fullLink = urlParams.href;
-    checkoutLink = `/cart?${fullLink.split("?")[1]}`;
+    checkoutLink = `/d5e4dfa0-43a7-4973-b225-82b43cf5a181?${
+      fullLink.split("?")[1]
+    }`;
   }
 
   if (domainParam) {
