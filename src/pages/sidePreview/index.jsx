@@ -11,6 +11,10 @@ import Accordion from "../../components/accordion";
 import ReviewCard from "../../components/reviewCard";
 import Tabs from "../../components/tabs";
 import ImageOverlay from "../../components/imageOverlay";
+import {
+  extractDataFromUrl,
+  fetchHighestPriceProduct,
+} from "../../utils/functions";
 
 const SidePreview = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -19,64 +23,30 @@ const SidePreview = () => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const [productId, setProductId] = useState([]);
-  const [domain, setdomain] = useState("");
+  const [domain, setDomain] = useState("");
   const [checkout, setCheckout] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   // domain and product id from url :: start
   useEffect(() => {
-    const url = new URL(window.location.href);
-    const productParam = url.searchParams.get("product");
-    const domainParam = url.searchParams.get("domain");
+    const { productIdArray, checkoutLink, domain } = extractDataFromUrl(
+      window.location.href
+    );
 
-    if (productParam) {
-      const productIdsArray = productParam
-        .split(",")
-        .filter((item) => item.trim() !== "") // Filter out empty values
-        .map((item) => {
-          const [id, quantity] = item.trim().split("@");
-          return { id, quantity };
-        });
-      setProductId(productIdsArray);
-
-      const fullLink = url.href;
-      const productLink = `/cart?${fullLink.split("?")[1]}`;
-      setCheckout(productLink);
+    if (productIdArray.length > 0) {
+      setProductId(productIdArray);
+      setCheckout(checkoutLink);
     }
 
-    if (domainParam) {
-      setdomain(`https://${domainParam.split("/")[2]}`);
+    if (domain) {
+      setDomain(domain);
     }
   }, []);
-
   // domain and product id from url :: end
 
   // product data fetch :: start
   useEffect(() => {
-    if (domain) {
-      fetch(`${domain}/products.json`)
-        .then((response) => response.json())
-        .then((data) => {
-          const filteredProducts = data.products.filter((product) =>
-            productId.some(({ id }) =>
-              product.variants.some((variant) => variant.id == id)
-            )
-          );
-
-          const productWithHighestPrice = filteredProducts.reduce(
-            (prevProduct, currentProduct) => {
-              return parseFloat(currentProduct.variants[0].price) >
-                parseFloat(prevProduct.variants[0].price)
-                ? currentProduct
-                : prevProduct;
-            },
-            filteredProducts[0]
-          );
-
-          setFilteredProducts(productWithHighestPrice);
-        })
-        .catch((error) => console.error("Error fetching products:", error));
-    }
+    fetchHighestPriceProduct(domain, productId, setFilteredProducts);
   }, [domain, productId]);
   // product data fetch :: end
 
@@ -311,7 +281,7 @@ const SidePreview = () => {
 
   return (
     <div className="full-page">
-      {/* side preview :: start */}
+      {/* ========== side preview :: start ========== */}
       <div className="preview-wrap">
         <div className="preview-pane">
           {/* product preview :: start */}
@@ -425,9 +395,9 @@ const SidePreview = () => {
           {/* video preview :: end */}
         </div>
       </div>
-      {/* side preview :: end */}
+      {/* ========== side preview :: end ========== */}
 
-      {/* mobile slide :: start */}
+      {/* ========== mobile slide :: start ========== */}
       <div className="mobile-slide fix-width">
         {/* main video :: start */}
         <div className="position-relative">
@@ -703,7 +673,7 @@ const SidePreview = () => {
         </div>
         {/* product grid :: end */}
       </div>
-      {/* mobile slide :: end */}
+      {/* ========== mobile slide :: end ========== */}
     </div>
   );
 };
