@@ -1,35 +1,35 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
-@import "./variables";
-@import "./mixin";
-@import "./global";
-@import "./header";
-@import "./home";
-@import "./product-info";
-@import "./video";
-@import "./cta";
-@import "./announcement-bar";
-@import "./progress";
-@import "./product-card";
-@import "./page-banner";
-@import "./shop-product-info";
-@import "./desc-points";
-@import "./variant";
-@import "./qty-selector";
-@import "./badge";
-@import "./tabs";
-@import "./review-card";
-@import "./product-grid-card";
-@import "./image-overlay";
-@import "./offer-card";
-@import "./benefit-card";
-@import "./accordion";
-@import "./video-progress-bar";
-@import "./radio-button";
-@import "./relevant-product-card";
+@import "./variables"; // all commom properties
+@import "./mixin"; // mixin to reuse css function
+@import "./global"; // global css
+@import "./header"; // css for header (header/index.jsx)
+@import "./product-info"; // css for video product cta (productInfo/index.jsx)
+@import "./video"; // video banner css (VideoBanner/index.jsx)
+@import "./cta"; // css for cta banner (ctaBanner/index.jsx)
+@import "./announcement-bar"; // css for announcement banner (announcementBar/index.jsx)
+@import "./progress"; // css for progress bar (progressBar/index.jsx)
+@import "./product-card"; // css for HorizontalProductCard which we use in cart page (horizontalProductCard/index.jsx)
+@import "./page-banner"; // css for banner which we use in miniPDP page (PageBanner/index.jsx)
+@import "./shop-product-info"; // css to display product details below product banner in miniPDP (shopProductInfo/index.jsx)
+@import "./desc-points"; // css for products points (sortDescPoints/index.jsx)
+@import "./variant"; // css for product variant image (variant/index.jsx)
+@import "./qty-selector"; // css for quantity selector (qtySelector/index.jsx)
+@import "./badge"; // css for badge (badge/index.jsx)
+@import "./tabs"; // css for tabs (tabs/index.jsx)
+@import "./review-card"; // css for review card (reviewCard/index.jsx)
+@import "./product-grid-card"; // css for product card (productCard/index.jsx)
+@import "./image-overlay"; // css for image overlay big (imageOverlay/index.jsx)
+@import "./offer-card"; // css for offer card (offerCard/index.jsx)
+@import "./benefit-card"; // css for benefits card which has image in background and text at bettom left corner (benefitCard/index.jsx)
+@import "./accordion"; // css for accordion (accordion/index.jsx)
+@import "./video-progress-bar"; // css for video length progressbar (progressbar/index.jsx)
+@import "./radio-button"; // css for radio button (radioButton/index.jsx)
+@import "./relevant-product-card"; // css for relevant product card (relevantProductCard/index.jsx)
 
 // Pages
+@import "./pages/home";
 @import "./pages/shop";
 @import "./pages/products";
 @import "./pages/offer-details";

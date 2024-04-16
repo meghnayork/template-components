@@ -16,13 +16,13 @@ const HorizontalProductCard = (props) => {
   const decrease = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      updateQuantity(quantity - 1);
+      updateQuantity && updateQuantity(quantity - 1);
     }
   };
 
   const increase = () => {
     setQuantity(quantity + 1);
-    updateQuantity(quantity + 1);
+    updateQuantity && updateQuantity(quantity + 1);
   };
 
   useEffect(() => {
