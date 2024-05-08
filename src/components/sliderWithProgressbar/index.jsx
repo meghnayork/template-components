@@ -116,6 +116,7 @@ const SliderWithProgressBar = (props) => {
             ref={handleVideoLoaded(index)}
             autoPlay={index === currentIndex}
             muted
+            playsInline
             loop
             style={{ width: "100%" }}
           >

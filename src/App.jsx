@@ -24,6 +24,8 @@ import {
 import ErrorPage from "./pages/404";
 import VideoTest from "./pages/videoTest";
 
+// Live link: https://main.d1plqacnr13y0o.amplifyapp.com/
+
 function App() {
   const router = createBrowserRouter([
     {

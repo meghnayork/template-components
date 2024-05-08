@@ -8,7 +8,7 @@ const VideoBanner = (props) => {
     video,
     withProgress = false,
     id,
-    loop = true,
+    loop = false,
     className,
   } = props;
 
