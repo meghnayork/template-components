@@ -6,6 +6,7 @@ import CTABanner from "../../components/ctaBanner";
 const GatedOffer = () => {
   const [disabled, setDisabled] = useState(true);
   const [videoId, setVideoId] = useState();
+  const [playBtn, setPlayBtn] = useState(false);
 
   // dynamic video duration :: start
   useEffect(() => {
@@ -20,7 +21,7 @@ const GatedOffer = () => {
     if (videoId !== undefined) {
       setTimeout(() => {
         setDisabled(false);
-        console.log("object is");
+        setPlayBtn(true);
       }, videoId);
     }
   }, [videoId]);
@@ -37,6 +38,7 @@ const GatedOffer = () => {
 
       {/* video banner :: start */}
       <VideoBanner
+        controlPlayer={playBtn}
         withProgress={true}
         id={"video-banner"}
         loop={false}

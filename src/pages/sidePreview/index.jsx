@@ -415,6 +415,7 @@ const SidePreview = () => {
           {/* video banner :: start */}
           <VideoBanner
             className="h-88vh"
+            loop={false}
             video={
               "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/shopifyAd.mp4"
             }

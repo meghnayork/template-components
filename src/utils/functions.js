@@ -1,8 +1,11 @@
 // fetch domain name and productId
 export const extractDataFromUrl = (url) => {
+  const searchParams = new URLSearchParams(window.location.search);
   const urlParams = new URL(url);
   const productParam = urlParams.searchParams.get("product");
-  const domainParam = urlParams.searchParams.get("domain");
+  const domainParam = searchParams.has("checkout_url")
+    ? urlParams.searchParams.get("checkout_url")
+    : urlParams.searchParams.get("domain");
   let productIdArray = [];
   let checkoutLink = "";
   let domain = "";

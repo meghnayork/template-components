@@ -8,8 +8,9 @@ const VideoBanner = (props) => {
     video,
     withProgress = false,
     id,
-    loop = false,
+    loop = true,
     className,
+    onPlayBtn = () => {},
   } = props;
 
   const [mute, setMute] = useState(true);
@@ -30,6 +31,27 @@ const VideoBanner = (props) => {
     setMute((prevMute) => !prevMute);
     videoRef.current.muted = !mute;
   };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const handlePlay = () => {
+      // perform any action when the video starts playing
+    };
+
+    const handleEnded = () => {
+      if (controlPlayer) {
+        setPlay(false);
+      }
+    };
+
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("ended", handleEnded);
+
+    return () => {
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("ended", handleEnded);
+    };
+  }, [controlPlayer]);
 
   useEffect(() => {
     if (controlPlayer) {

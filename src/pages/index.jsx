@@ -18,3 +18,4 @@ export { default as GatedOffer } from "./gatedOffer";
 export { default as MiniPdp } from "./miniPDP";
 export { default as SingleVideo } from "./sidePreview/singleVideo";
 export { default as ProgramSignup } from "./programSignup";
+export { default as ObviVideoSlider } from "./obviVideoSlider";

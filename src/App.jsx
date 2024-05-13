@@ -20,6 +20,7 @@ import {
   MiniPdp,
   SingleVideo,
   ProgramSignup,
+  ObviVideoSlider,
 } from "./pages";
 import ErrorPage from "./pages/404";
 import VideoTest from "./pages/videoTest";
@@ -111,6 +112,10 @@ function App() {
     {
       path: "f722ceb1-fb24-4689-a736-68ed7ac826da", // video-test
       element: <VideoTest />,
+    },
+    {
+      path: "14e0b128-1490-4453-92a8-b58a89a6fd1c",
+      element: <ObviVideoSlider />,
     },
     {
       path: "*",
