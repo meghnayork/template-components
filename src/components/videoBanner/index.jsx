@@ -10,7 +10,6 @@ const VideoBanner = (props) => {
     id,
     loop = true,
     className,
-    onPlayBtn = () => {},
   } = props;
 
   const [mute, setMute] = useState(true);

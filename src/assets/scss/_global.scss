@@ -59,6 +59,12 @@ a {
     }
 }
 
+.gap {
+    &-10 {
+        gap: 10px;
+    }
+}
+
 .flex {
     display: flex;
 
@@ -68,6 +74,10 @@ a {
 
     &-between {
         justify-content: space-between;
+    }
+
+    &-center {
+        align-items: center;
     }
 
     &.align-center {
