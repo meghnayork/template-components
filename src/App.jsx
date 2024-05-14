@@ -23,6 +23,7 @@ import {
   ObviVideoSlider,
   ObviCarousel,
   IntakeShop,
+  IntakeCarousel,
 } from "./pages";
 import ErrorPage from "./pages/404";
 import VideoTest from "./pages/videoTest";
@@ -116,7 +117,7 @@ function App() {
       element: <VideoTest />,
     },
     {
-      path: "14e0b128-1490-4453-92a8-b58a89a6fd1c", // Obvi Sanland Integrated
+      path: "14e0b128-1490-4453-92a8-b58a89a6fd1c", // Obvi Sanland Integrated {Add dynamic link: "?product=39653220352261@1.0,39579443626245@1.0&domain=https://myobvi.com&checkout_url=https://myobvi.com"}
       element: <ObviVideoSlider />,
     },
     {
@@ -124,8 +125,12 @@ function App() {
       element: <ObviCarousel />,
     },
     {
-      path: "intake",
+      path: "1caf896f-1318-470f-a22e-f8b0830f86b3",
       element: <IntakeShop />,
+    },
+    {
+      path: "c689d74c-1646-4e1f-9c08-4c8c6ec64b6f",
+      element: <IntakeCarousel />,
     },
     {
       path: "*",
