@@ -1,14 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import Header from "../../components/header";
 import CTABanner from "../../components/ctaBanner";
 import SliderWithProgressBar from "../../components/sliderWithProgressbar";
-import { extractDataFromUrl } from "../../utils/functions";
 
-const ObviVideoSlider = () => {
-  const [domain, setDomain] = useState("");
-  const [productId, setProductId] = useState([]);
-  const [checkout, setCheckout] = useState("/");
-
+const ObviCarousel = () => {
   // carousel settings start
   const settings = {
     dots: true,
@@ -23,32 +18,6 @@ const ObviVideoSlider = () => {
     pauseOnHover: false,
   };
   // carousel settings end
-
-  useEffect(() => {
-    const { productIdArray, checkoutLink, domain } = extractDataFromUrl(
-      window.location.href
-    );
-
-    if (productIdArray.length > 0) {
-      setProductId(productIdArray);
-    }
-
-    if (domain) {
-      setDomain(domain);
-    }
-  }, []);
-
-  useEffect(() => {
-    generateCartLink();
-  }, [productId]);
-
-  const generateCartLink = () => {
-    const productStrings = productId
-      .map((product) => product.id + ":" + parseFloat(product.quantity))
-      .join(",");
-    // Constructing the link
-    setCheckout(`${domain}/cart/${productStrings}`);
-  };
 
   // slides :: start
   const slides = [
@@ -66,10 +35,8 @@ const ObviVideoSlider = () => {
         <Header
           position={"relative"}
           logoImg={"https://d1unenfz496pdf.cloudfront.net/Assets/obvi-logo.png"}
-          brandTitle={"Real Customers, Real Results - Get Obvi Today! "}
+          brandTitle={"Hear From Actual Obvi Customers Below"}
           variant="solid"
-          enableCart={true}
-          productInCart={productId.length > 0 ? productId.length : 0}
         />
 
         {/* video slider :: start */}
@@ -82,11 +49,11 @@ const ObviVideoSlider = () => {
 
         {/* cta banner :: start */}
         <CTABanner
-          ctaContent={"Complete Checkout"}
+          ctaContent={"Shop Now"}
           className={"position-relative"}
           isIcon={false}
           isTextCenter={true}
-          link={checkout}
+          link={"https://myobvi.com/pages/burn-elite-a"}
         />
         {/* cta banner :: end */}
       </div>
@@ -94,4 +61,4 @@ const ObviVideoSlider = () => {
   );
 };
 
-export default ObviVideoSlider;
+export default ObviCarousel;

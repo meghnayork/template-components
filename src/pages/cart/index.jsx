@@ -5,6 +5,10 @@ import AnnouncementBar from "../../components/announcementBar";
 import ProgressBar from "../../components/progressBar";
 import HorizontalProductCard from "../../components/horizontalProductCard";
 import RelevantProductCard from "../../components/relevantProductCard";
+import {
+  extractDataFromUrl,
+  fetchFilteredProducts,
+} from "../../utils/functions";
 
 let addBtn = "Add to My Order";
 
@@ -56,69 +60,35 @@ const Cart = () => {
 
   // get domain and product :: start
   useEffect(() => {
-    const url = new URL(window.location.href);
-    const productParam = url.searchParams.get("product");
-    const domainParam = url.searchParams.get("domain");
+    const url = window.location.href;
+    // const productParam = url.searchParams.get("product");
+    // const domainParam = url.searchParams.get("domain");
 
-    if (productParam) {
-      const productIdsArray = productParam.split(",").map((item) => {
-        const [id, quantity] = item.trim().split("@");
-        return { id, quantity };
-      });
-      setProductId(productIdsArray);
-    }
+    // if (productParam) {
+    //   const productIdsArray = productParam.split(",").map((item) => {
+    //     const [id, quantity] = item.trim().split("@");
+    //     return { id, quantity };
+    //   });
+    //   setProductId(productIdsArray);
+    // }
 
-    if (domainParam) {
-      setdomain(`https://${domainParam.split("/")[2]}`);
-    }
+    // if (domainParam) {
+    //   setdomain(`https://${domainParam.split("/")[2]}`);
+    // }
+
+    const { domainAddress, link, products } = extractDataFromUrl(url);
+    setdomain(domainAddress);
+    setProductId(products);
   }, []);
   // get domain and product :: end
 
   // get cart item and relevant product :: start
   useEffect(() => {
     if (domain) {
-      fetch(`${domain}/products.json`)
-        .then((response) => response.json())
-        .then((data) => {
-          const filteredProducts = data.products.reduce((acc, product) => {
-            const matchingVariants = product.variants.filter((variant) =>
-              productId.some(({ id }) => variant.id == id)
-            );
-
-            matchingVariants.forEach((variant) => {
-              if (
-                !acc.some((item) =>
-                  item.variants.some((v) => v.id === variant.id)
-                )
-              ) {
-                acc.push({ ...product, variants: [variant] });
-              }
-            });
-
-            return acc;
-          }, []);
-
-          const productsWithQuantity = filteredProducts.map((product) => {
-            const matchedProduct = productId.find(({ id }) =>
-              product.variants.some((variant) => variant.id == id)
-            );
-            const quantity = matchedProduct
-              ? parseFloat(matchedProduct.quantity)
-              : 0;
-            return { ...product, quantity };
-          });
-
-          const nonIncludedProducts = data.products.filter(
-            (product) =>
-              !productId.some(({ id }) =>
-                product.variants.some((variant) => variant.id === id)
-              )
-          );
-
-          const firstFourNonIncludedProducts = nonIncludedProducts.slice(0, 4);
-          setRelevantProduct(firstFourNonIncludedProducts);
-
-          setFilteredProducts(productsWithQuantity);
+      fetchFilteredProducts(domain, productId)
+        .then(({ filteredProducts, relevantProducts }) => {
+          setRelevantProduct(relevantProducts);
+          setFilteredProducts(filteredProducts);
         })
         .catch((error) => console.error("Error fetching products:", error));
     }
@@ -134,7 +104,8 @@ const Cart = () => {
       );
       setTotalPrice(total);
 
-      generateCartLink();
+      const checkoutLink = generateCartLink(filteredProducts, domain);
+      setCheckout(checkoutLink);
     } else {
       setTotalPrice(50);
       setCheckout("");
@@ -230,16 +201,6 @@ const Cart = () => {
     }
   };
   // add from relevant products :: end
-
-  // generate cart link :: start
-  const generateCartLink = () => {
-    const productStrings = filteredProducts
-      .map((product) => product.variants[0].id + ":" + product.quantity)
-      .join(",");
-    // Constructing the link
-    setCheckout(`${domain}/cart/${productStrings}`);
-  };
-  // generate cart link :: end
 
   return (
     <div className="mobile-slide">

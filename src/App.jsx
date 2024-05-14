@@ -21,6 +21,8 @@ import {
   SingleVideo,
   ProgramSignup,
   ObviVideoSlider,
+  ObviCarousel,
+  IntakeShop,
 } from "./pages";
 import ErrorPage from "./pages/404";
 import VideoTest from "./pages/videoTest";
@@ -114,8 +116,16 @@ function App() {
       element: <VideoTest />,
     },
     {
-      path: "14e0b128-1490-4453-92a8-b58a89a6fd1c",
+      path: "14e0b128-1490-4453-92a8-b58a89a6fd1c", // Obvi Sanland Integrated
       element: <ObviVideoSlider />,
+    },
+    {
+      path: "2319938c-ba57-475a-a352-611aad75efde", // Obvi Static
+      element: <ObviCarousel />,
+    },
+    {
+      path: "intake",
+      element: <IntakeShop />,
     },
     {
       path: "*",

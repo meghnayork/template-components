@@ -19,3 +19,5 @@ export { default as MiniPdp } from "./miniPDP";
 export { default as SingleVideo } from "./sidePreview/singleVideo";
 export { default as ProgramSignup } from "./programSignup";
 export { default as ObviVideoSlider } from "./obviVideoSlider";
+export { default as ObviCarousel } from "./obviVideoSlider/obviCarousel";
+export { default as IntakeShop } from "./intake";

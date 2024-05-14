@@ -26,6 +26,7 @@ const SidePreview = () => {
   const [domain, setDomain] = useState("");
   const [checkout, setCheckout] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [play, setPlay] = useState(true);
 
   // domain and product id from url :: start
   useEffect(() => {
@@ -54,6 +55,15 @@ const SidePreview = () => {
     setIsSmallScreen(window.innerWidth <= 992);
   }, []);
 
+  useEffect(() => {
+    if (sidebarOpen) {
+      if (play && currentVideoUrl !== null) {
+        var videoPlay = document.getElementById("previewVideo");
+        videoPlay?.addEventListener("ended", handleEnded);
+      }
+    }
+  }, [sidebarOpen, play, currentVideoUrl]);
+
   // carousel settings :: start
   const settings = {
     slidesToShow: 3,
@@ -78,13 +88,18 @@ const SidePreview = () => {
     var video = document.getElementById(videoId);
 
     if (!isSmallScreen) {
+      var videoPlay = document.getElementById("previewVideo");
+      videoPlay?.addEventListener("ended", handleEnded);
+
       setSidebarOpen(true);
       setCurrentVideoUrl(videoUrl);
     } else {
+      video.addEventListener("ended", () => setPlay(false));
       setCurrentVideoUrl(videoUrl);
       if (video.paused) {
         pauseAllVideos();
         video.play();
+        setPlay(true);
       } else {
         video.pause();
       }
@@ -107,6 +122,17 @@ const SidePreview = () => {
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
+  };
+
+  const handleEnded = () => {
+    setPlay(false);
+  };
+
+  const togglePlay = () => {
+    var video = document.getElementById("previewVideo");
+    setPlay(true);
+    video.play();
+    setEnded(false);
   };
   // video controls :: end
 
@@ -320,7 +346,32 @@ const SidePreview = () => {
           {sidebarOpen && (
             <div className="video-sidebar">
               <div className="video-wrapper">
-                <video key={currentVideoUrl} muted={isMuted} autoPlay>
+                {/* play button :: start */}
+                <div className="play-overlay" onClick={togglePlay}>
+                  {!play && (
+                    <div className="play-btn">
+                      <svg
+                        width="21"
+                        height="23"
+                        viewBox="0 0 21 23"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M19.4533 10.162C20.7093 10.8872 20.7093 12.7 19.4533 13.4252L3.68529 22.5289C2.42929 23.254 0.859294 22.3476 0.859294 20.8973L0.859295 2.68994C0.859295 1.23963 2.42929 0.333197 3.6853 1.05835L19.4533 10.162Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+                {/* play button :: end */}
+                <video
+                  key={currentVideoUrl}
+                  muted={isMuted}
+                  autoPlay
+                  id="previewVideo"
+                >
                   <source src={currentVideoUrl} type="video/mp4" />
                 </video>
               </div>
@@ -464,11 +515,14 @@ const SidePreview = () => {
                     <video id={`video-${index}`}>
                       <source src={videoUrl} type="video/mp4" />
                     </video>
-                    {videoUrl !== currentVideoUrl && (
+                    {(videoUrl !== currentVideoUrl || !play) && (
                       <button
                         className="video-play-btn btn"
                         key={videoUrl}
-                        onClick={() => openSidebar(videoUrl, `video-${index}`)}
+                        onClick={() => {
+                          openSidebar(videoUrl, `video-${index}`);
+                          !isSmallScreen && togglePlay();
+                        }}
                       >
                         <svg
                           width="12"
