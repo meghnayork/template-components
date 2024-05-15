@@ -10,4 +10,9 @@
         width: 100%;
         max-width: 400px;
     }
+
+    @media (max-width: 375px) {
+        width: 100%;
+        max-width: 360px;
+    }
 }
