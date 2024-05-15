@@ -2,13 +2,13 @@ import React from "react";
 import RatingStar from "../ratingStar";
 
 const ReviewCard = (props) => {
-  const { title, feedback, rating, name, verified = true } = props;
+  const { title, feedback, rating, name, verified = true, color } = props;
 
   return (
     <div className="review-card">
       <h4 className="review-title">{title}</h4>
       <p className="feedback-text"> {feedback} </p>
-      <RatingStar rating={rating} />
+      <RatingStar color={color} rating={rating} />
       <p className="reviewer-name"> {name} </p>
 
       {verified && (

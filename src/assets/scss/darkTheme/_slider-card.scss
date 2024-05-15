@@ -1,0 +1,83 @@
+.slider {
+    &-card {
+        padding: 20px;
+        background-color: $white;
+        border-radius: 15px;
+        margin-right: 10px;
+
+        .rating-count {
+            color: $blue;
+            font-size: 12px;
+            line-height: 16px;
+            text-decoration: underline;
+        }
+    }
+
+    &-price-wrap {
+        .price-wrap {
+            justify-content: center;
+            margin-top: 5px;
+
+            .original-price {
+                color: $mid-gray;
+            }
+
+            .price {
+                color: $charcoal;
+            }
+        }
+    }
+
+    &-cta {
+        padding: 10px 20px;
+        background-color: $dark;
+        text-align: center;
+        font-size: 12px;
+        line-height: 18px;
+        color: $white;
+        font-weight: 600;
+        width: 100%;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    &-details {
+        text-align: center;
+        display: grid;
+        gap: 5px;
+        color: $charcoal;
+
+        .title {
+            font-size: 15px;
+            line-height: 17px;
+            font-weight: 700;
+        }
+
+        .variant {
+            font-size: 12px;
+            color: $dark-gray;
+            line-height: 16px;
+            font-weight: 300;
+        }
+    }
+
+    &-img-box {
+        padding: 10px 0 20px;
+        width: 100%;
+        height: 120px;
+        border-radius: 10px;
+        overflow: hidden;
+        @include flex-centered;
+
+        img {
+            height: 100%;
+            object-fit: cover;
+            width: auto;
+        }
+    }
+
+    &-card-rating {
+        @include flex-centered;
+        gap: 5px;
+    }
+}

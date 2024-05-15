@@ -2,12 +2,6 @@ import React from "react";
 import Header from "../../components/header";
 import CTABanner from "../../components/ctaBanner";
 import SliderWithProgressBar from "../../components/sliderWithProgressbar";
-import video1 from "../../assets/media/videos/video1.mp4";
-import video2 from "../../assets/media/videos/video2.mp4";
-import video3 from "../../assets/media/videos/video3.mp4";
-import video4 from "../../assets/media/videos/video4.mp4";
-import video5 from "../../assets/media/videos/video5.mp4";
-import logo from "../../assets/media/images/logo.png";
 
 const IntakeCarousel = () => {
   // carousel settings start
@@ -26,15 +20,23 @@ const IntakeCarousel = () => {
   // carousel settings end
 
   // slides :: start
-  const slides = [video1, video2, video3, video4, video5];
+  const slides = [
+    "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake1.mp4",
+    "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake2.mp4",
+    "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake3.mp4",
+    "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake4.mp4",
+  ];
   // slides :: end
 
   return (
     <div className="mobile-slide">
       <div className="video-slider-progress-wrap">
         <Header
+          // enableCart={true}
           position={"relative"}
-          logoImg={logo}
+          logoImg={
+            "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake-logo-new.png"
+          }
           brandTitle={"Get Started With Intake"}
           variant="solid"
         />
@@ -53,7 +55,7 @@ const IntakeCarousel = () => {
           className={"position-relative"}
           isIcon={false}
           isTextCenter={true}
-          link={"#"}
+          link={"/1caf896f-1318-470f-a22e-f8b0830f86b3"}
         />
         {/* cta banner :: end */}
       </div>

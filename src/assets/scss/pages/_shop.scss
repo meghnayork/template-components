@@ -2,6 +2,7 @@
     @include flex-centered;
     text-align: center;
     background-color: $white;
+    overflow: hidden;
 }
 
 .dropdown-section {

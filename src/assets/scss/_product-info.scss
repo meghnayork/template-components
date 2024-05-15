@@ -46,6 +46,7 @@
         border-radius: 10px;
         overflow: hidden;
         @include flex-centered;
+        background-color: $gray-light;
 
         img {
             height: 100%;

@@ -11,6 +11,7 @@ import Tabs from "../../components/tabs";
 import Slider from "react-slick";
 import RatingStar from "../../components/ratingStar";
 import ReviewCard from "../../components/reviewCard";
+import RadioButton from "../../components/radioButton";
 
 const IntakeShop = () => {
   const [price, setPrice] = useState({
@@ -52,26 +53,26 @@ const IntakeShop = () => {
     {
       id: 1,
       imageUrl:
-        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png",
-      alt: "Slide 1",
+        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake-img-slider.jpg",
+      alt: "Intake 1",
     },
     {
       id: 2,
       imageUrl:
-        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png",
-      alt: "Slide 2",
+        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake-img-slider2.jpg",
+      alt: "Intake 2",
     },
     {
       id: 3,
       imageUrl:
-        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png",
-      alt: "Slide 3",
+        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake-img-slider3.jpg",
+      alt: "Intake 3",
     },
     {
       id: 4,
       imageUrl:
-        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/HarryPotter_GoldenSnitch.png",
-      alt: "Slide 4",
+        "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake-img-slider4.jpg",
+      alt: "Intake 4",
     },
   ];
   // carousel slides end
@@ -158,6 +159,32 @@ const IntakeShop = () => {
   ];
   // tabs end
 
+  // radio button values :: start
+  var radioVal = [
+    {
+      value: "black",
+      element: "<p>Black Bands</p>",
+      checked: true,
+    },
+    {
+      value: "white",
+      element: "<p>White Bands</p>",
+    },
+  ];
+
+  var qtyVal = [
+    {
+      value: "15",
+      element: "<p>15 Uses</p>",
+      checked: true,
+    },
+    {
+      value: "30",
+      element: "<p>30 Uses</p>",
+    },
+  ];
+  // radio button values :: end
+
   // Rating start
   const rating = [
     {
@@ -193,7 +220,7 @@ const IntakeShop = () => {
       <Header
         position={"relative"}
         logoImg={
-          "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/logo-white.svg"
+          "https://pierson-public-static.s3.us-east-2.amazonaws.com/Assets/intake-logo-new.png"
         }
         brandTitle={"Don’t Breathe Right, Breathe Better"}
         variant="solid"
@@ -231,31 +258,27 @@ const IntakeShop = () => {
       <SortDescPoints descList={descList} />
       {/* sort description :: end */}
 
-      {/* dropdown section :: start */}
-      <div className="dropdown-section">
-        <label htmlFor="dropdown" className="label-text">
-          Color Variant
-        </label>
-        <select id="color" className="dropdown">
-          <option value="white">White Bands</option>
-          <option value="black" selected>
-            Black Bands
-          </option>
-        </select>
-      </div>
-      {/* dropdown section :: end */}
+      {/* color button :: start */}
+      <RadioButton
+        outlineButton={true}
+        options={radioVal}
+        onChange={(data) => console.log(data)}
+        name="colorButton"
+      />
+      {/* color button :: end */}
 
-      {/* dropdown section :: start */}
-      <div className="dropdown-section">
-        <label htmlFor="dropdown" className="label-text">
-          Intake Count
-        </label>
-        <select id="intake" className="dropdown" onChange={onChange}>
-          <option value="15">15 Uses</option>
-          <option value="30">30 Uses</option>
-        </select>
-      </div>
-      {/* dropdown section :: end */}
+      {/* qty button :: start */}
+      <RadioButton
+        name="qtyButton"
+        outlineButton={true}
+        options={qtyVal}
+        onChange={(data) => console.log(data)}
+      />
+      {/* qty button :: end */}
+
+      {/* quantity section :: start */}
+      <QtySelector onChange={(data) => console.log(data)} />
+      {/* quantity section :: end */}
 
       {/* benefits section :: start */}
       <div className="benefits-section">

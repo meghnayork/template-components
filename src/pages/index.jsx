@@ -22,3 +22,4 @@ export { default as ObviVideoSlider } from "./obviVideoSlider";
 export { default as ObviCarousel } from "./obviVideoSlider/obviCarousel";
 export { default as IntakeShop } from "./intake";
 export { default as IntakeCarousel } from "./intake/intakeCarousel";
+export { default as ObviStoreDark } from "./obviVideoSlider/obviStoreDark";

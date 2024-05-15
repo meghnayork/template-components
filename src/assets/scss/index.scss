@@ -27,6 +27,8 @@
 @import "./video-progress-bar"; // css for video length progressbar (progressbar/index.jsx)
 @import "./radio-button"; // css for radio button (radioButton/index.jsx)
 @import "./relevant-product-card"; // css for relevant product card (relevantProductCard/index.jsx)
+@import "./darkTheme/banner-title";
+@import "./darkTheme/slider-card";
 
 // Pages
 @import "./pages/home";
@@ -37,5 +39,6 @@
 @import "./pages/video-slider";
 @import "./pages/cart";
 @import "./pages/program-signup";
+@import "./pages/obvi-store";
 
 @import "./custom-class";
